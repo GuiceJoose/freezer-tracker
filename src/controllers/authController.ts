@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { IGetUserAuthInfoRequest } from "../middleware/authMiddleware";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import asyncHandler from "express-async-handler";
@@ -9,7 +10,7 @@ import { AppDataSource } from "../data-source";
 // @route POST /api/users/
 // @access Public
 export const registerUser = asyncHandler(
-  async (req: Request, res: Response) => {
+  async (req: IGetUserAuthInfoRequest, res: Response) => {
     const { username, email, password } = req.body;
 
     if (!username || !email || !password) {
@@ -75,9 +76,11 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
 // @desc Get user data
 // @route GET /api/users/me
 // @access Private
-export const getMe = asyncHandler(async (req: Request, res: Response) => {
-  res.status(200).json((<any>req).user);
-});
+export const getMe = asyncHandler(
+  async (req: IGetUserAuthInfoRequest, res: Response) => {
+    res.status(200).json(req.user);
+  }
+);
 
 const generateToken = (id: number) => {
   return jwt.sign({ id }, process.env.JWT_SECRET as string, {
