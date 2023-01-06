@@ -41,7 +41,6 @@ This project is a fullstack PERN application for keeping track of what's in your
 #### Backend: 
 <ul>
     <li>Add validation to auth routes</li>
-    <li>Get, Post, Update, Delete routes for freezer items</li>
 </ul>
 
 ## Completed
@@ -58,5 +57,6 @@ This project is a fullstack PERN application for keeping track of what's in your
     <li>PostgreSQL db and TypeORM setup</li>
     <li>Models for: user, freezer</li>
     <li>Get, Post, Put, and Delete routes/controllers for freezers</li>
+    <li>Get, Post, Update, Delete routes for freezer items</li>
 
 </ul>

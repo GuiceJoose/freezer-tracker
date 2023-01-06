@@ -3,6 +3,7 @@ import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { User } from "./entity/User";
 import { Freezer } from "./entity/Freezer";
+import { Item } from "./entity/Item";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -11,7 +12,7 @@ export const AppDataSource = new DataSource({
   username: "postgres",
   password: process.env.DB_PASSWORD,
   database: "freezer-tracker",
-  entities: [User, Freezer],
+  entities: [User, Freezer, Item],
   synchronize: true,
   logging: false,
 });
